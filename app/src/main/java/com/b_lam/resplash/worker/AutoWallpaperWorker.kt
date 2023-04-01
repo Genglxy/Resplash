@@ -131,7 +131,6 @@ class AutoWallpaperWorker(
                         WallpaperManager.getInstance(context).setStream(it, centerCropRect,
                         true, WallpaperManager.FLAG_LOCK)
                     }
-
                 } else {
                     WallpaperManager.getInstance(context).setStream(it)
                 }
