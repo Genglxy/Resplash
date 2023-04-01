@@ -123,8 +123,15 @@ class AutoWallpaperWorker(
                         }
                     val screenSelect = inputData.getInt(KEY_AUTO_WALLPAPER_SELECT_SCREEN,
                         WallpaperManager.FLAG_SYSTEM or WallpaperManager.FLAG_LOCK)
-                    WallpaperManager.getInstance(context).setStream(it, centerCropRect,
-                        true, screenSelect)
+                    if (screenSelect and WallpaperManager.FLAG_SYSTEM) {
+                        WallpaperManager.getInstance(context).setStream(it, centerCropRect,
+                        true, WallpaperManager.FLAG_SYSTEM)
+                    }
+                    if (screenSelect and WallpaperManager.FLAG_LOCK) {
+                        WallpaperManager.getInstance(context).setStream(it, centerCropRect,
+                        true, WallpaperManager.FLAG_LOCK)
+                    }
+
                 } else {
                     WallpaperManager.getInstance(context).setStream(it)
                 }
